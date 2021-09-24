@@ -49,6 +49,32 @@ public class DemandeNbr {
         return nbr;
     }
        
+    public static String DemandeStr()
+    {  
+        String res = ""; 
+        try 
+        {            
+         System.out.println("Veuillez entrer une phrase");
+        res = Sc.nextLine();        
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Veuillez entrer une phrase, s'il vous plaît !!!");
+            DemandeStr();            
+        }
+        return res;
+    }
+    public static int DemandRandomInt(int min, int max)
+    {
+        int res = (int)(Math.random() * (max - min) + min);
+        return res;
+    }
+    public static float DemandRandomFloat(int min, int max)
+    {
+        float res = (float)(Math.random() * (max - min) + min);
+        return res;
+    }
+       
  
     
 }
