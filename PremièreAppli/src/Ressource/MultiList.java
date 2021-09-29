@@ -24,23 +24,26 @@ public class MultiList
     
     static List<Integer> surplus = new ArrayList<Integer>();
     
+    public static int LongueurSurplus()
+    {
+        return surplus.size();
+    }
     public static int Surplus(int value)
     {
         return surplus.get(value);
     }
-    public static void PlusLong(String table)
+    public static void PlusLong(int size1, int size2,int size3,int size4)
     {
-                boolean test = false;
-        tableLong.add(table1.size());
-        tableLong.add(table2.size());
-        tableLong.add(table3.size());
-        tableLong.add(table4.size());
+        tableLong.add(size1);//2
+        tableLong.add(size2);//1
+        tableLong.add(size3);//1
+        tableLong.add(size4);//2
         
-        for (int i = 1; i <= 4; i++) 
+        for (int i = 0; i < 4; i++) 
         {
             if (tableLong.get(i) == Collections.max(tableLong))
             {       
-                    surplus.add(i);
+                    surplus.add(i+1);
             }
         }
         
@@ -75,56 +78,46 @@ public class MultiList
         }
     }
     
-    public static int Longueur(String table)
+    public static int Longueur(ArrayList Table)
     {
-        int result= 0; 
-        switch(table)
-        {
-            case "table1" -> 
-            {
-                result = table1.size();
-            }
-            case "table2" -> 
-            {
-                result = table2.size();
-            }
-            case "table3" -> 
-            {
-                result = table3.size();
-            }
-            case "table4" -> 
-            {
-                result = table4.size();
-            }
-                default -> System.out.println("Il n'y a pas de table correspondante.\nLes tables existantes sont :\n - \"table1\"\n - \"table2\"\n -\"table3\"\n\n");
-                
-        }
+        int result = Table.size();
         return result;
     }
      
-    public static void  AddValue(String table,int value)
+    public static void  AddValue(int value1,int value2, int value3, int value4)
     {
-        switch(table)
+        table1.add(value1);
+        table2.add(value2);
+        table3.add(value3);
+        table4.add(value4);        
+    }
+    public static int GetValue(int Col, int Value)
+    {
+        int resultat = 0;
+        try 
         {
-            case "table1" -> 
+            switch (Col)
             {
-                table1.add(value);
+                case 1:
+                    resultat = table1.get(Value);
+                    break;
+                case 2:
+                    resultat = table2.get(Value);
+                    break;
+                case 3:
+                    resultat = table3.get(Value);
+                    break;
+                case 4:
+                    resultat = table4.get(Value);
+                    break;
+                default:System.out.println("Il n'y a pas de pas de colonne à cette emplacement");
             }
-            case "table2" -> 
-            {
-                table2.add(value);
-            }
-            case "table3" -> 
-            {
-                table3.add(value);
-            }
-            case "table4" -> 
-            {
-                table4.add(value);
-            }
-                default -> System.out.println("Il n'y a pas de table correspondante.\nLes tables existantes sont :\n - \"table1\"\n - \"table2\"\n -\"table3\"\n\n");
-                
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Il n'y a pas de valeur");
         }
+        return resultat;
     }
     
 }

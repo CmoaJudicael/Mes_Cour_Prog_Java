@@ -8,6 +8,7 @@ package ApplicationCour2;
 import Ressource.DemandeNbr;
 import Ressource.MultiList;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +18,10 @@ import java.util.List;
 public class Filtrage_Compta_Valeur 
 {
      static List<Integer> MemoireNbrSaisie = new ArrayList<Integer>();
+     static List<Integer> valeur1 = new ArrayList<Integer>();
+     static List<Integer> valeur2 = new ArrayList<Integer>();
+     static List<Integer> valeur3 = new ArrayList<Integer>();
+     static List<Integer> valeur4 = new ArrayList<Integer>();
      static int NbrSaisie;
      static MultiList Ml = new MultiList();
     public static void main(String[] args) {
@@ -29,8 +34,7 @@ public class Filtrage_Compta_Valeur
                 if (NbrSaisie > 0 & NbrSaisie < 5) 
                 {
                     MemoireNbrSaisie.add(NbrSaisie);
-                    System.out.println("recommencer");   
-                    
+                    System.out.println("recommencer");
                 }
                 else
                 {
@@ -39,43 +43,59 @@ public class Filtrage_Compta_Valeur
             }
             
         } while (NbrSaisie!=0 & NbrSaisie!= -9);
-      
+      int count = 0;
         for (int i = 0; i < MemoireNbrSaisie.size(); i++) 
         {
             switch (MemoireNbrSaisie.get(i))
             {
                 case 1 :
-                    Ml.AddValue("table1", 1);
+                    valeur1.add(1);
+                    count++;
                     break;
                 case 2 :
-                    Ml.AddValue("table2", 2);
+                    valeur2.add(2);
+                    count++;
                     break;
                 case 3 :
-                    Ml.AddValue("table3", 3);
+                    
+                    valeur3.add(3);
+                    count++;
                     break;
                 case 4 :
-                    Ml.AddValue("table4", 4);
+                    valeur4.add(4);
+                    count++;
                     break;                
             } 
             
         }
-            Ml.TriageReverse("table1");
-            Ml.TriageReverse("table2");
-            Ml.TriageReverse("table3");
-            Ml.TriageReverse("table4");
         
-            System.out.println("Il y a : " + Ml.Longueur("table1") + " de valeur 1 qui à été saisie\n" );
-            System.out.println("Il y a : " + Ml.Longueur("table2") + " de valeur 2 qui à été saisie\n" );
-            System.out.println("Il y a : " + Ml.Longueur("table3") + " de valeur 3 qui à été saisie\n" );
-            System.out.println("Il y a : " + Ml.Longueur("table4") + " de valeur 4 qui à été saisie\n" );            
+            System.out.println("Il y a : " + valeur1.size() + " de valeur 1 qui à été saisie\n" );
+            System.out.println("Il y a : " + valeur2.size() + " de valeur 2 qui à été saisie\n" );
+            System.out.println("Il y a : " + valeur3.size() + " de valeur 3 qui à été saisie\n" );
+            System.out.println("Il y a : " + valeur4.size() + " de valeur 4 qui à été saisie\n" );            
             
-            System.out.println("la valeur la plus saisie est la valeur : " + Ml.Surplus(0) );
-            for (int i = 0; i < 3; i++) 
-            {
-                if (Ml.Surplus(i) == Ml.Surplus(i+1)) 
-                {                    
-                    System.out.println("la valeur la plus saisie est la valeur : " + Ml.Surplus(i+1) );
+            Ml.PlusLong( valeur1.size(), valeur2.size(), valeur3.size(), valeur4.size());
+            for (int i = 0; i < Ml.LongueurSurplus(); i++) 
+            {                       
+                int proportion = 0;
+                System.out.println("la valeur la plus saisie est la valeur : " + Ml.Surplus(i));
+                switch (i+1)
+                {
+                    case 1:
+                        proportion = (valeur1.size()*100)/count ;
+                        break;
+                    case 2:
+                        proportion = (valeur2.size()*100)/count ;
+                        break;
+                    case 3:
+                        proportion = (valeur3.size()*100)/count ;
+                        break;
+                    case 4:
+                        proportion = (valeur4.size()*100)/count ;
+                        break;
                 }
+                System.out.println("soit : " + proportion + " %");
+                
             }
     }
     
