@@ -28,6 +28,7 @@ public class ApplicationSwitchCase
                     
         }
         
+        
     }
     
  public static int NbrEntier()

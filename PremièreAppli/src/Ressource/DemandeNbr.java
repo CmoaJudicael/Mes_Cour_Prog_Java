@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class DemandeNbr {
     
     public static Scanner Sc = new Scanner(System.in);
+    public static boolean verif = false;
     public static void main(String[] args) {
         
     }
@@ -35,17 +36,23 @@ public class DemandeNbr {
     
     public static int NbrEntier()
     {  
+         verif=false;
         int nbr = 0; 
-        try 
-        {            
-         System.out.println("Veuillez entrer un nombre entier");
-        nbr = Integer.parseInt(Sc.nextLine());        
-        } 
-        catch (Exception e) 
-        {
-            System.out.println("Veuillez entrer un nombre entier, s'il vous plaît !!!");
-            NbrEntier();            
+        while (!verif) 
+        {     
+             try 
+            {            
+                System.out.println("\nVeuillez entrer un nombre entier");
+                nbr = Integer.parseInt(Sc.nextLine());   
+                verif = true;
+            } 
+            catch (Exception e) 
+            {
+                System.out.println("\nVeuillez entrer un nombre entier, s'il vous plaît !!!");
+                verif = false;          
+            }            
         }
+       
         return nbr;
     }
        

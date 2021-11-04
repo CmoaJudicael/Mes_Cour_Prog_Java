@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Affichage_Graphique;
+
 import Ressource.DemandeNbr;
 
 /**
@@ -93,6 +94,25 @@ public class App1NbrMys extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
+        do {     
+            
+            System.out.println("Trouvez le nombre mystère : ");
+            NbrSaisie = DemandeNbr.NbrEntier();
+            if (NbrSaisie == NbrMystere) 
+            {
+                System.out.println("Félicitation, vous avez trouvé le nombre mystère !!! ;)");
+            }
+            else if (NbrSaisie>NbrMystere) 
+            {
+                System.out.println("Votre nombre est plus grand");
+            }
+            else if (NbrSaisie<NbrMystere) 
+            {
+                System.out.println("Votre nombre est plus petit");
+            }
+            count++;
+        } while (NbrSaisie != NbrMystere);
+        System.out.println("\nNombre de coup joué : " + count);
     }//GEN-LAST:event_SubmitActionPerformed
 
     /**
@@ -128,31 +148,9 @@ public class App1NbrMys extends javax.swing.JFrame {
                 new App1NbrMys().setVisible(true);
             }
         });
-        Instruction();
-    }
-    private static void Instruction()
-    {
         NbrMystere = DemandeNbr.DemandRandomInt(0, 100);
         count = 0;
-        do {     
-            
-            System.out.println("Trouvez le nombre mystère : ");
-            NbrSaisie = DemandeNbr.NbrEntier();
-            if (NbrSaisie == NbrMystere) 
-            {
-                System.out.println("Félicitation, vous avez trouvé le nombre mystère !!! ;)");
-            }
-            else if (NbrSaisie>NbrMystere) 
-            {
-                System.out.println("Votre nombre est plus grand");
-            }
-            else if (NbrSaisie<NbrMystere) 
-            {
-                System.out.println("Votre nombre est plus petit");
-            }
-            count++;
-        } while (NbrSaisie != NbrMystere);
-        System.out.println("\nNombre de coup joué : " + count);
+        
     }
     
     static int NbrSaisie, NbrMystere, count;
